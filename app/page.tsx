@@ -10,6 +10,7 @@ import {
   Phone,
 } from "lucide-react";
 import Image from "next/image";
+import MotionEffects from "./components/MotionEffects";
 
 const experience = [
   {
@@ -194,12 +195,13 @@ const personSchema = {
 export default function Home() {
   return (
     <>
+      <MotionEffects />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
-      <header className="site-header">
+      <header className="site-header" data-reveal="fade">
         <nav className="nav-shell" aria-label="Primary navigation">
           <a className="brand" href="#top" aria-label="Deven Rikame, home">
             DR<span>.</span>
@@ -219,23 +221,23 @@ export default function Home() {
       <main id="top">
         <section className="hero section-shell" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="eyebrow">
+            <p className="eyebrow" data-reveal="up" data-delay="0">
               <span className="status-dot" aria-hidden="true" />
               Open to full-time software engineering roles
             </p>
-            <p className="hero-intro">Hello, I&apos;m</p>
-            <h1 id="hero-title">Deven Rikame</h1>
-            <p className="hero-role">
+            <p className="hero-intro" data-reveal="up" data-delay="1">Hello, I&apos;m</p>
+            <h1 id="hero-title" data-reveal="up" data-delay="2">Deven Rikame</h1>
+            <p className="hero-role" data-reveal="up" data-delay="3">
               Full Stack Developer <span>/</span> Software Development Engineer
             </p>
-            <p className="hero-summary">
+            <p className="hero-summary" data-reveal="up" data-delay="4">
               Mumbai-based software developer with hands-on experience building
               and delivering production websites, CRM systems, SaaS products,
               and AI-powered applications. I work across frontend, backend,
               databases, authentication, and deployment using React, Next.js,
               TypeScript, Node.js, Firebase, Supabase, and SQL.
             </p>
-            <div className="hero-actions">
+            <div className="hero-actions" data-reveal="up" data-delay="5">
               <a className="button button-primary" href="#projects">
                 Explore my work <ArrowUpRight size={18} />
               </a>
@@ -247,7 +249,7 @@ export default function Home() {
                 <Download size={18} /> Download resume
               </a>
             </div>
-            <div className="hero-links" aria-label="Contact links">
+            <div className="hero-links" aria-label="Contact links" data-reveal="up" data-delay="6">
               <a href="mailto:devenrikame55@gmail.com">
                 <Mail size={17} /> devenrikame55@gmail.com
               </a>
@@ -268,7 +270,7 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="profile-card" aria-label="Portrait of Deven Rikame">
+          <aside className="profile-card" aria-label="Portrait of Deven Rikame" data-reveal="scale" data-delay="2">
             <div className="profile-frame">
               <Image
                 src="/deven-rikame-profile.jpeg"
@@ -306,18 +308,18 @@ export default function Home() {
         </section>
 
         <section id="about" className="section-shell content-section">
-          <div className="section-heading">
+          <div className="section-heading" data-reveal="up">
             <p className="section-number">01 / About</p>
             <h2>Business understanding meets hands-on engineering.</h2>
           </div>
           <div className="about-grid">
-            <p className="lead-copy">
+            <p className="lead-copy" data-reveal="left">
               My path into software started with a commerce background and data
               analysis, then grew into full-stack development through structured
               training and real client work. That mix helps me understand both
               the product goal and the engineering required to deliver it.
             </p>
-            <div className="about-details">
+            <div className="about-details" data-reveal="right" data-delay="1">
               <p>
                 I work across the development lifecycle: gathering requirements,
                 designing responsive interfaces, building APIs and database
@@ -339,13 +341,18 @@ export default function Home() {
         </section>
 
         <section id="experience" className="section-shell content-section">
-          <div className="section-heading">
+          <div className="section-heading" data-reveal="up">
             <p className="section-number">02 / Experience</p>
             <h2>From business requirements to shipped software.</h2>
           </div>
           <div className="timeline">
-            {experience.map((item) => (
-              <article className="timeline-item" key={`${item.company}-${item.role}`}>
+            {experience.map((item, index) => (
+              <article
+                className="timeline-item"
+                key={`${item.company}-${item.role}`}
+                data-reveal="up"
+                data-delay={index % 3}
+              >
                 <div className="timeline-meta">
                   <p>{item.period}</p>
                   <span><MapPin size={14} /> {item.location}</span>
@@ -368,7 +375,7 @@ export default function Home() {
         </section>
 
         <section id="projects" className="section-shell content-section">
-          <div className="section-heading heading-row">
+          <div className="section-heading heading-row" data-reveal="up">
             <div>
               <p className="section-number">03 / Selected projects</p>
               <h2>Work explained through challenge, action, and result.</h2>
@@ -380,7 +387,12 @@ export default function Home() {
           </div>
           <div className="projects-grid">
             {projects.map((project, index) => (
-              <article className={`project-card ${index === 0 ? "featured" : ""}`} key={project.title}>
+              <article
+                className={`project-card ${index === 0 ? "featured" : ""}`}
+                key={project.title}
+                data-reveal="up"
+                data-delay={index % 2}
+              >
                 <div className="project-topline">
                   <span className="project-index">{String(index + 1).padStart(2, "0")}</span>
                   <span className="project-status">{project.status}</span>
@@ -425,13 +437,18 @@ export default function Home() {
         </section>
 
         <section id="skills" className="section-shell content-section">
-          <div className="section-heading">
+          <div className="section-heading" data-reveal="up">
             <p className="section-number">04 / Technical skills</p>
             <h2>A practical full-stack toolkit.</h2>
           </div>
           <div className="skills-grid">
-            {skills.map((group) => (
-              <article className="skill-group" key={group.label}>
+            {skills.map((group, index) => (
+              <article
+                className="skill-group"
+                key={group.label}
+                data-reveal="up"
+                data-delay={index % 3}
+              >
                 <h3>{group.label}</h3>
                 <ul>
                   {group.items.map((item) => <li key={item}>{item}</li>)}
@@ -442,13 +459,13 @@ export default function Home() {
         </section>
 
         <section id="education" className="section-shell content-section">
-          <div className="section-heading">
+          <div className="section-heading" data-reveal="up">
             <p className="section-number">05 / Education</p>
             <h2>Education and continuous development.</h2>
           </div>
           <div className="education-list">
-            {education.map((item) => (
-              <article key={item.program}>
+            {education.map((item, index) => (
+              <article key={item.program} data-reveal="up" data-delay={index % 2}>
                 <GraduationCap size={22} aria-hidden="true" />
                 <div>
                   <h3>{item.program}</h3>
@@ -464,7 +481,7 @@ export default function Home() {
         </section>
 
         <section id="contact" className="contact-section">
-          <div className="section-shell contact-inner">
+          <div className="section-shell contact-inner" data-reveal="up">
             <p className="section-number">06 / Contact</p>
             <h2>Looking for a developer who takes ownership?</h2>
             <p>

@@ -63,6 +63,77 @@ a {
   color: #07101f;
 }
 
+.scroll-progress {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  box-shadow: 0 0 14px rgba(108, 229, 219, 0.5);
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
+}
+
+.motion-enabled [data-reveal] {
+  opacity: 0;
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.motion-enabled [data-reveal="up"] {
+  transform: translate3d(0, 28px, 0);
+}
+
+.motion-enabled [data-reveal="left"] {
+  transform: translate3d(-30px, 0, 0);
+}
+
+.motion-enabled [data-reveal="right"] {
+  transform: translate3d(30px, 0, 0);
+}
+
+.motion-enabled [data-reveal="scale"] {
+  filter: blur(4px);
+  transform: translate3d(0, 18px, 0) scale(0.96);
+}
+
+.motion-enabled [data-reveal].is-visible {
+  opacity: 1;
+  filter: none;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+[data-delay="1"] {
+  --reveal-delay: 80ms;
+}
+
+[data-delay="2"] {
+  --reveal-delay: 160ms;
+}
+
+[data-delay="3"] {
+  --reveal-delay: 240ms;
+}
+
+[data-delay="4"] {
+  --reveal-delay: 320ms;
+}
+
+[data-delay="5"] {
+  --reveal-delay: 400ms;
+}
+
+[data-delay="6"] {
+  --reveal-delay: 480ms;
+}
+
 .section-shell {
   width: min(1120px, calc(100% - 48px));
   margin-inline: auto;
@@ -95,6 +166,8 @@ a {
 
 .brand span {
   color: var(--accent);
+  display: inline-block;
+  animation: brand-pulse 3s ease-in-out infinite;
 }
 
 .nav-links {
@@ -173,6 +246,7 @@ footer a:hover {
   border-radius: 50%;
   background: var(--cyan);
   box-shadow: 0 0 0 5px rgba(108, 229, 219, 0.1), 0 0 22px var(--cyan);
+  animation: status-pulse 2.4s ease-in-out infinite;
 }
 
 .hero h1 {
@@ -236,6 +310,17 @@ footer a:hover {
   background: #dce8ff;
 }
 
+.button svg,
+.nav-cta svg,
+.icon-link svg {
+  transition: transform 180ms ease;
+}
+
+.button:hover svg,
+.nav-cta:hover svg {
+  transform: translate(2px, -2px);
+}
+
 .button-secondary {
   border-color: var(--line);
   background: rgba(255, 255, 255, 0.035);
@@ -264,6 +349,8 @@ footer a:hover {
 }
 
 .profile-card {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
   position: relative;
   width: 100%;
   max-width: 410px;
@@ -291,12 +378,21 @@ footer a:hover {
   border-radius: 22px;
   background: var(--panel);
   box-shadow: 0 34px 90px rgba(0, 0, 0, 0.42);
+  transform: perspective(1100px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transform-style: preserve-3d;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .profile-photo {
   object-fit: cover;
   object-position: center 28%;
   filter: saturate(0.84) contrast(1.04);
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 500ms ease;
+}
+
+.profile-card:hover .profile-photo {
+  filter: saturate(0.95) contrast(1.04);
+  transform: scale(1.025);
 }
 
 .profile-shade {
@@ -359,6 +455,11 @@ footer a:hover {
   min-width: 0;
   padding: 13px 12px;
   background: rgba(13, 17, 28, 0.96);
+  transition: background 180ms ease;
+}
+
+.profile-facts div:hover {
+  background: rgba(117, 167, 255, 0.09);
 }
 
 .profile-facts span,
@@ -490,6 +591,12 @@ footer a:hover {
   border-radius: 50%;
   background: var(--bg);
   box-shadow: 0 0 0 5px rgba(117, 167, 255, 0.08);
+  transition: background 180ms ease, box-shadow 180ms ease;
+}
+
+.timeline-item:hover::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 7px rgba(117, 167, 255, 0.1), 0 0 20px rgba(117, 167, 255, 0.42);
 }
 
 .timeline-meta p {
@@ -586,13 +693,14 @@ footer a:hover {
   border: 1px solid var(--line);
   border-radius: 16px;
   background: linear-gradient(150deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), border-color 180ms ease, background 180ms ease, box-shadow 260ms ease;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-7px);
   border-color: rgba(117, 167, 255, 0.32);
   background: linear-gradient(150deg, rgba(117, 167, 255, 0.07), rgba(255, 255, 255, 0.014));
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.22);
 }
 
 .project-card.featured {
@@ -666,6 +774,10 @@ footer a:hover {
   color: var(--accent);
 }
 
+.icon-link:hover svg {
+  transform: rotate(-7deg) scale(1.08);
+}
+
 .star-story {
   display: grid;
   gap: 17px;
@@ -724,6 +836,16 @@ footer a:hover {
   color: #aab4c7;
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.62rem;
+  transition: color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.project-card:hover .tag-list li {
+  border-color: rgba(117, 167, 255, 0.2);
+}
+
+.tag-list li:hover {
+  color: var(--text);
+  transform: translateY(-2px);
 }
 
 .skills-grid {
@@ -737,6 +859,13 @@ footer a:hover {
   border: 1px solid var(--line);
   border-radius: 13px;
   background: rgba(255, 255, 255, 0.02);
+  transition: transform 220ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.skill-group:hover {
+  transform: translateY(-5px);
+  border-color: rgba(117, 167, 255, 0.28);
+  background: rgba(117, 167, 255, 0.05);
 }
 
 .skill-group h3 {
@@ -777,6 +906,13 @@ footer a:hover {
   border: 1px solid var(--line);
   border-radius: 13px;
   background: rgba(255, 255, 255, 0.02);
+  transition: transform 220ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.education-list article:hover {
+  transform: translateX(5px);
+  border-color: rgba(108, 229, 219, 0.24);
+  background: rgba(108, 229, 219, 0.035);
 }
 
 .education-list svg {
@@ -873,6 +1009,28 @@ footer {
 .footer-inner div {
   display: flex;
   gap: 21px;
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 5px rgba(108, 229, 219, 0.1), 0 0 16px rgba(108, 229, 219, 0.55);
+  }
+  50% {
+    opacity: 0.72;
+    box-shadow: 0 0 0 8px rgba(108, 229, 219, 0.035), 0 0 25px rgba(108, 229, 219, 0.75);
+  }
+}
+
+@keyframes brand-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
 }
 
 @media (max-width: 920px) {
@@ -1015,6 +1173,18 @@ footer {
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .scroll-progress {
+    display: none;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
   }
 }
 

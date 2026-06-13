@@ -13,8 +13,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Deven's Portfolio",
-  description: "High-Performance Software Engineer Portfolio specializing in Fintech, Algorithmic Trading, and Full-Stack Architecture.",
+  title: "Deven Rikame | Full Stack Developer",
+  description:
+    "Portfolio of Deven Rikame, a Mumbai-based full-stack developer building production websites, CRM systems, SaaS platforms, and AI-powered applications with React, Next.js, TypeScript, Node.js, Firebase, Supabase, and SQL.",
+  keywords: [
+    "Deven Rikame",
+    "Full Stack Developer",
+    "Software Engineer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript",
+    "Node.js",
+    "Mumbai",
+  ],
+  authors: [{ name: "Deven Rikame" }],
+  creator: "Deven Rikame",
+  openGraph: {
+    title: "Deven Rikame | Full Stack Developer",
+    description:
+      "Full-stack developer delivering production websites, CRM systems, SaaS platforms, and AI-powered applications.",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary",
+    title: "Deven Rikame | Full Stack Developer",
+    description:
+      "Full-stack developer building practical, production-ready web products.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

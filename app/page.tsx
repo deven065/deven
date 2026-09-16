@@ -243,7 +243,7 @@ export default function Home() {
               </a>
               <a
                 className="button button-secondary"
-                href="/Deven_Rikame_Resume.pdf"
+                href="/Deven_Resume.pdf"
                 download
               >
                 <Download size={18} /> Download resume
@@ -508,7 +508,7 @@ export default function Home() {
           <div>
             <a href="https://www.linkedin.com/in/dev55" target="_blank" rel="noreferrer">LinkedIn</a>
             <a href="https://github.com/deven065" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="/Deven_Rikame_Resume.pdf" target="_blank">Resume</a>
+            <a href="/Deven_Resume.pdf" target="_blank">Resume</a>
           </div>
         </div>
       </footer>

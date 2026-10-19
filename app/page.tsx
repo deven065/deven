@@ -16,100 +16,132 @@ const experience = [
   {
     role: "Freelance Full Stack Developer",
     company: "Deven Digital Labs",
-    period: "October 2025 - Present",
+    period: "Oct 2025 - Present",
     location: "Remote",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
     points: [
-      "Build and deliver responsive business websites using Next.js, React, and Tailwind CSS.",
-      "Own the complete client lifecycle from requirement gathering and solution design through development, deployment, and handover.",
-      "Translate business goals into conversion-focused user experiences that strengthen clients' online presence.",
+      "Design, build, and deploy responsive business websites and web applications with Next.js, React, and Tailwind CSS.",
+      "Own the full client lifecycle: requirements discovery, solution design, development, deployment, and handover.",
+      "Translate business goals into clear, conversion-focused user experiences that strengthen clients' online presence.",
     ],
   },
   {
-    role: "Software Development Engineer",
-    company: "BMG Interiors - Freelance",
-    period: "February 2026 - May 2026",
+    role: "Software Development Engineer (Contract)",
+    company: "BMG Interiors",
+    period: "Feb 2026 - May 2026",
     location: "Remote",
+    stack: ["Next.js", "React", "MariaDB"],
     points: [
-      "Designed and deployed a production Next.js website in under three weeks, working directly with the co-founder from discovery to launch.",
-      "Managed design, development, testing, and deployment independently while keeping the solution aligned with business requirements.",
-      "Improved client conversion and decision-making effectiveness by 20%, according to project outcomes reported in the engagement.",
+      "Partnered directly with the co-founder to take a production Next.js website from discovery to launch in under three weeks.",
+      "Independently owned design, development, testing, and deployment, keeping delivery tightly aligned with business requirements.",
+      "Contributed to a 20% improvement in client conversion and decision-making effectiveness.",
+      "Built the company's internal CRM alongside the website (see Selected Projects).",
     ],
   },
   {
     role: "Data Analyst",
     company: "HUDL",
-    period: "February 2024 - June 2024",
-    location: "Goregaon, Mumbai",
+    period: "Feb 2024 - Jun 2024",
+    location: "Mumbai, India",
+    stack: ["Dashboards", "Data analysis", "Reporting"],
     points: [
-      "Built operational dashboards for lead tracking and pipeline management.",
-      "Collaborated with senior managers to turn business data into clear, actionable insights.",
+      "Built operational dashboards for lead tracking and sales pipeline management.",
+      "Worked with senior managers to turn raw business data into clear, actionable insights for decision-making.",
     ],
   },
 ];
 
 const projects = [
   {
+    title: "ProofPath: AI Career Evidence Coach",
+    period: "Kurukshetra Hackathon",
+    status: "Hackathon project",
+    stack: ["React", "Framer Motion", "Java", "Spring Boot", "NeonDB (PostgreSQL)", "Groq AI", "GitHub Webhooks"],
+    situation:
+      "Students list skills on a resume that their public code does not clearly show, and have no way to see how a real job posting compares with their actual work.",
+    action:
+      "Built an AI career coach that compares a real job posting with evidence in a student's GitHub repository, links every conclusion to the exact file and commit, explains each gap, and reassesses affected skills automatically when new code is pushed.",
+    result:
+      "A working, deployed product for the AI Career Coach challenge that turns job requirements into traceable, evidence-backed feedback.",
+    repo: "https://github.com/deven065/JobApplication",
+    live: "https://proofpath-ai.netlify.app/",
+  },
+  {
+    title: "Solo Levelling",
+    period: "Personal project",
+    status: "Full-stack app",
+    stack: ["React", "Framer Motion", "Tailwind CSS", "Java", "NeonDB (PostgreSQL)", "Groq AI"],
+    situation:
+      "Self-improvement tools often feel like chores, and users lose motivation when progress is not visible or rewarding.",
+    action:
+      "Built a gamified levelling system inspired by Solo Leveling's System, with a Java backend, a NeonDB (PostgreSQL) data layer, an animated React interface, and Groq AI integration.",
+    result:
+      "A polished, deployed full-stack app that turns personal progress into an engaging, game-like experience.",
+    repo: "https://github.com/deven065/Solo-Levelling",
+    live: "https://solo-levelling-325.netlify.app/",
+  },
+  {
     title: "BMG Interiors CRM",
-    period: "February - May 2026",
-    status: "Production project",
+    period: "Feb - May 2026",
+    status: "Production",
     stack: ["React", "Next.js", "MariaDB"],
     situation:
-      "The interiors team needed a more structured way to manage client information, operations, and lead follow-ups.",
+      "An interiors business was managing client records, operations, and lead follow-ups without a structured system.",
     action:
-      "Developed responsive CRM interfaces, integrated MariaDB for structured storage, optimized queries, and refined workflows with internal stakeholders.",
+      "Designed and built responsive CRM interfaces on a MariaDB backend, optimized queries, and iterated on workflows with internal stakeholders.",
     result:
-      "Improved decision-making by 25% and lead follow-ups by 20%, based on the outcomes recorded for the project.",
+      "Improved decision-making by 25% and lead follow-ups by 20%.",
     repo: "https://github.com/deven065/bmginteriors-crm",
   },
   {
     title: "AI Subscription E-commerce Platform",
     period: "2025",
-    status: "Freelance delivery",
+    status: "Client delivery",
     stack: ["Next.js", "TypeScript", "React", "Supabase"],
     situation:
-      "A client needed a scalable storefront for selling AI subscription plans with a simple path from plan discovery to account management.",
+      "A client needed a scalable storefront for selling AI subscription plans, from plan discovery through account management.",
     action:
-      "Built authentication, user and database operations, a customer dashboard, plan management, and a Stripe-ready checkout flow with Supabase.",
+      "Implemented authentication, database operations, a customer dashboard, plan management, and a Stripe-ready checkout flow on Supabase.",
     result:
-      "Delivered a production-ready, type-safe codebase designed for client-managed deployment and future payment integration.",
+      "Delivered a type-safe, production-ready codebase prepared for client-managed deployment and payment integration.",
   },
   {
     title: "SocietiQ",
-    period: "Active development",
+    period: "In development",
     status: "SaaS product",
     stack: ["React", "Tailwind CSS", "Firebase Auth", "Realtime Database"],
     situation:
-      "Residential societies often manage residents, staff, notices, accounting, and maintenance records through disconnected manual processes.",
+      "Residential societies often run residents, staff, notices, accounting, and maintenance on disconnected manual processes.",
     action:
-      "Designed a multi-society SaaS platform with admin/member access, secure authentication, free core tools, and tiered Pro and Advanced plans.",
+      "Architected a multi-society SaaS platform with admin and member roles, secure authentication, free core tools, and tiered Pro and Advanced plans.",
     result:
-      "Created a scalable product foundation that brings community operations and subscription-based services into one role-driven platform.",
+      "A scalable, role-driven foundation that unifies community operations and subscription services in one product.",
     repo: "https://github.com/deven065/SocietiQ",
   },
   {
     title: "FlatMate",
     period: "May 2025",
-    status: "Full-stack project",
+    status: "Full-stack app",
     stack: ["React", "Tailwind CSS", "Firebase Auth", "Realtime Database"],
     situation:
-      "A single residential society needed a secure digital workflow for member records, expenses, maintenance payments, and announcements.",
+      "A residential society needed a secure digital workflow for member records, expenses, maintenance payments, and announcements.",
     action:
-      "Implemented role-based authentication, protected admin routes, real-time role retrieval, member and finance workflows, and accessible dark mode.",
+      "Built role-based authentication, protected admin routes, member and finance workflows, and an accessible dark mode.",
     result:
-      "Produced a working society management application with separate, secure experiences for administrators and members.",
+      "A working society-management application with separate, secure experiences for administrators and members.",
     repo: "https://github.com/deven065/FlatMate",
   },
   {
     title: "Chef Claude",
-    period: "November - December 2024",
+    period: "Nov - Dec 2024",
     status: "AI application",
     stack: ["React", "JavaScript", "Hugging Face API", "Vercel"],
     situation:
-      "People often have ingredients at home but need practical ideas for turning them into complete meals.",
+      "People often have ingredients on hand but lack practical ideas for turning them into a complete meal.",
     action:
-      "Built a React application that sends available ingredients to a Hugging Face model and presents dynamically generated recipe suggestions.",
+      "Built a React app that sends a user's ingredients to a Hugging Face model and renders generated recipe suggestions.",
     result:
-      "Delivered and deployed a practical AI-assisted recipe experience that generates useful ideas from real user input.",
+      "Deployed on Vercel as a practical AI-assisted recipe tool that responds to real user input.",
     repo: "https://github.com/deven065/chef-ai",
   },
 ];
@@ -343,7 +375,7 @@ export default function Home() {
         <section id="experience" className="section-shell content-section">
           <div className="section-heading" data-reveal="up">
             <p className="section-number">02 / Experience</p>
-            <h2>From business requirements to shipped software.</h2>
+            <h2>Professional experience delivering software that works for the business.</h2>
           </div>
           <div className="timeline">
             {experience.map((item, index) => (
@@ -367,6 +399,9 @@ export default function Home() {
                     <ul>
                       {item.points.map((point) => <li key={point}>{point}</li>)}
                     </ul>
+                    <ul className="tag-list" aria-label={`${item.company} technologies`}>
+                      {item.stack.map((tech) => <li key={tech}>{tech}</li>)}
+                    </ul>
                   </div>
                 </div>
               </article>
@@ -378,11 +413,11 @@ export default function Home() {
           <div className="section-heading heading-row" data-reveal="up">
             <div>
               <p className="section-number">03 / Selected projects</p>
-              <h2>Work explained through challenge, action, and result.</h2>
+              <h2>Production systems and products, with measurable outcomes.</h2>
             </div>
             <p className="heading-note">
-              Structured with the STAR approach so recruiters can quickly see
-              the problem, my contribution, and the outcome.
+              Each project outlines the problem, what I built, and the
+              outcome. Source code is linked where available.
             </p>
           </div>
           <div className="projects-grid">
@@ -402,6 +437,18 @@ export default function Home() {
                     <h3>{project.title}</h3>
                     <p>{project.period}</p>
                   </div>
+                  <div className="project-links">
+                  {project.live && (
+                    <a
+                      className="icon-link"
+                      href={project.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Open ${project.title} live demo`}
+                    >
+                      <ArrowUpRight size={20} />
+                    </a>
+                  )}
                   {project.repo && (
                     <a
                       className="icon-link"
@@ -413,18 +460,19 @@ export default function Home() {
                       <Code2 size={20} />
                     </a>
                   )}
+                  </div>
                 </div>
                 <div className="star-story">
                   <div>
-                    <span>Situation</span>
+                    <span>Problem</span>
                     <p>{project.situation}</p>
                   </div>
                   <div>
-                    <span>Task & action</span>
+                    <span>What I built</span>
                     <p>{project.action}</p>
                   </div>
                   <div className="result">
-                    <span>Result</span>
+                    <span>Impact</span>
                     <p>{project.result}</p>
                   </div>
                 </div>

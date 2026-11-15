@@ -74,6 +74,63 @@ export default function MotionEffects() {
       profile?.style.setProperty("--tilt-y", "0deg");
     };
 
+    // Split section headings into words that rotate into place
+    const headings = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        ".section-heading h2, .contact-inner h2",
+      ),
+    );
+    headings.forEach((heading) => {
+      if (heading.dataset.split) return;
+      const words = (heading.textContent ?? "").trim().split(/\s+/);
+      heading.setAttribute("aria-label", words.join(" "));
+      heading.textContent = "";
+      words.forEach((word, index) => {
+        const span = document.createElement("span");
+        span.className = "word";
+        span.setAttribute("aria-hidden", "true");
+        span.style.setProperty("--w", String(index));
+        span.textContent = word;
+        heading.append(span, index < words.length - 1 ? " " : "");
+      });
+      heading.dataset.split = "true";
+      heading.classList.add("split-words");
+    });
+    const headingObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-in");
+          headingObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.4 },
+    );
+    headings.forEach((heading) => headingObserver.observe(heading));
+
+    // Magnetic buttons that lean toward the cursor
+    const magnets = Array.from(
+      document.querySelectorAll<HTMLElement>(".button, .nav-cta"),
+    );
+    const onMagnetMove = (event: PointerEvent) => {
+      if (event.pointerType === "touch") return;
+      const button = event.currentTarget as HTMLElement;
+      const bounds = button.getBoundingClientRect();
+      const dx = event.clientX - (bounds.left + bounds.width / 2);
+      const dy = event.clientY - (bounds.top + bounds.height / 2);
+      button.style.setProperty("--tx", `${dx * 0.18}px`);
+      button.style.setProperty("--ty", `${dy * 0.28}px`);
+    };
+    const onMagnetLeave = (event: PointerEvent) => {
+      const button = event.currentTarget as HTMLElement;
+      button.style.setProperty("--tx", "0px");
+      button.style.setProperty("--ty", "0px");
+    };
+    magnets.forEach((button) => {
+      button.addEventListener("pointermove", onMagnetMove);
+      button.addEventListener("pointerleave", onMagnetLeave);
+    });
+
     // Animated number counters
     const counters = Array.from(
       document.querySelectorAll<HTMLElement>("[data-count]"),
@@ -115,10 +172,20 @@ export default function MotionEffects() {
       const bounds = card.getBoundingClientRect();
       card.style.setProperty("--mx", `${event.clientX - bounds.left}px`);
       card.style.setProperty("--my", `${event.clientY - bounds.top}px`);
+      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+      card.style.setProperty("--rx", `${y * -6}deg`);
+      card.style.setProperty("--ry", `${x * 7}deg`);
     };
-    spotlightCards.forEach((card) =>
-      card.addEventListener("pointermove", onCardMove),
-    );
+    const onCardLeave = (event: PointerEvent) => {
+      const card = event.currentTarget as HTMLElement;
+      card.style.setProperty("--rx", "0deg");
+      card.style.setProperty("--ry", "0deg");
+    };
+    spotlightCards.forEach((card) => {
+      card.addEventListener("pointermove", onCardMove);
+      card.addEventListener("pointerleave", onCardLeave);
+    });
 
     // Highlight the nav link for the section in view
     const navLinks = Array.from(
@@ -151,10 +218,16 @@ export default function MotionEffects() {
     return () => {
       observer.disconnect();
       counterObserver.disconnect();
+      headingObserver.disconnect();
+      magnets.forEach((button) => {
+        button.removeEventListener("pointermove", onMagnetMove);
+        button.removeEventListener("pointerleave", onMagnetLeave);
+      });
       sectionObserver.disconnect();
-      spotlightCards.forEach((card) =>
-        card.removeEventListener("pointermove", onCardMove),
-      );
+      spotlightCards.forEach((card) => {
+        card.removeEventListener("pointermove", onCardMove);
+        card.removeEventListener("pointerleave", onCardLeave);
+      });
       window.removeEventListener("scroll", onScroll);
       profile?.removeEventListener("pointermove", onPointerMove);
       profile?.removeEventListener("pointerleave", resetTilt);

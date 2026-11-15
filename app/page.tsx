@@ -10,6 +10,7 @@ import {
   Phone,
 } from "lucide-react";
 import Image from "next/image";
+import HeroSceneLoader from "./components/HeroSceneLoader";
 import MotionEffects from "./components/MotionEffects";
 
 const experience = [
@@ -282,13 +283,28 @@ export default function Home() {
 
       <main id="top">
         <section className="hero section-shell" aria-labelledby="hero-title">
+          <HeroSceneLoader />
           <div className="hero-copy">
             <p className="eyebrow" data-reveal="up" data-delay="0">
               <span className="status-dot" aria-hidden="true" />
               Open to full-time software engineering roles
             </p>
             <p className="hero-intro" data-reveal="up" data-delay="1">Hello, I&apos;m</p>
-            <h1 id="hero-title" data-reveal="up" data-delay="2">Deven Rikame</h1>
+            <h1 id="hero-title" className="hero-name" aria-label="Deven Rikame">
+              {["Deven", "Rikame"].map((word, wordIndex) => (
+                <span className="name-word" aria-hidden="true" key={word}>
+                  {word.split("").map((char, charIndex) => (
+                    <span
+                      className="char"
+                      key={charIndex}
+                      style={{ "--i": wordIndex * 5 + charIndex } as React.CSSProperties}
+                    >
+                      {char}
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </h1>
             <p className="hero-role" data-reveal="up" data-delay="3">
               Full Stack Developer <span>/</span> Software Development Engineer
             </p>

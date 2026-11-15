@@ -74,6 +74,75 @@ export default function MotionEffects() {
       profile?.style.setProperty("--tilt-y", "0deg");
     };
 
+    // Animated number counters
+    const counters = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-count]"),
+    );
+    counters.forEach((el) => {
+      el.textContent = "0";
+    });
+    const counterObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          counterObserver.unobserve(el);
+          const target = Number(el.dataset.count ?? 0);
+          const duration = 1400;
+          const start = performance.now();
+          const tick = (now: number) => {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 4);
+            el.textContent = String(Math.round(target * eased));
+            if (t < 1) window.requestAnimationFrame(tick);
+          };
+          window.requestAnimationFrame(tick);
+        });
+      },
+      { threshold: 0.6 },
+    );
+    counters.forEach((el) => counterObserver.observe(el));
+
+    // Cursor spotlight on cards
+    const spotlightCards = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        ".project-card, .skill-group, .education-list article",
+      ),
+    );
+    const onCardMove = (event: PointerEvent) => {
+      if (event.pointerType === "touch") return;
+      const card = event.currentTarget as HTMLElement;
+      const bounds = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${event.clientX - bounds.left}px`);
+      card.style.setProperty("--my", `${event.clientY - bounds.top}px`);
+    };
+    spotlightCards.forEach((card) =>
+      card.addEventListener("pointermove", onCardMove),
+    );
+
+    // Highlight the nav link for the section in view
+    const navLinks = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>(".nav-links a"),
+    );
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach((link) =>
+            link.classList.toggle(
+              "is-active",
+              link.getAttribute("href") === `#${entry.target.id}`,
+            ),
+          );
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    navLinks.forEach((link) => {
+      const section = document.querySelector(link.getAttribute("href") ?? "");
+      if (section) sectionObserver.observe(section);
+    });
+
     window.addEventListener("scroll", onScroll, { passive: true });
     profile?.addEventListener("pointermove", onPointerMove);
     profile?.addEventListener("pointerleave", resetTilt);
@@ -81,6 +150,11 @@ export default function MotionEffects() {
 
     return () => {
       observer.disconnect();
+      counterObserver.disconnect();
+      sectionObserver.disconnect();
+      spotlightCards.forEach((card) =>
+        card.removeEventListener("pointermove", onCardMove),
+      );
       window.removeEventListener("scroll", onScroll);
       profile?.removeEventListener("pointermove", onPointerMove);
       profile?.removeEventListener("pointerleave", resetTilt);

@@ -217,6 +217,15 @@ const education = [
   },
 ];
 
+const stats = [
+  { prefix: "Top ", value: 30, suffix: "", label: "of ~3,000 teams at the Handover Hackathon (result pending)" },
+  { prefix: "", value: 169, suffix: "", label: "automated tests run on every Baton push" },
+  { prefix: "", value: 25, suffix: "%", label: "better decision-making with the BMG Interiors CRM" },
+  { prefix: "", value: 20, suffix: "%", label: "improvement in lead follow-ups for the client" },
+];
+
+const marqueeItems = skills.flatMap((group) => group.items);
+
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -359,6 +368,27 @@ export default function Home() {
             </div>
           </aside>
         </section>
+
+        <section className="stats-band section-shell" aria-label="Key results">
+          {stats.map((stat, index) => (
+            <div key={stat.label} data-reveal="up" data-delay={index % 4}>
+              <p className="stat-value">
+                {stat.prefix}
+                <span data-count={stat.value}>{stat.value}</span>
+                {stat.suffix}
+              </p>
+              <p className="stat-label">{stat.label}</p>
+            </div>
+          ))}
+        </section>
+
+        <div className="marquee" aria-label="Technologies I work with">
+          <div className="marquee-track" aria-hidden="true">
+            {[...marqueeItems, ...marqueeItems].map((item, index) => (
+              <span key={`${item}-${index}`}>{item}</span>
+            ))}
+          </div>
+        </div>
 
         <section id="about" className="section-shell content-section">
           <div className="section-heading" data-reveal="up">

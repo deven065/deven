@@ -37,7 +37,7 @@ const experience = [
       "Partnered directly with the co-founder to take a production Next.js website from discovery to launch in under three weeks.",
       "Independently owned design, development, testing, and deployment, keeping delivery tightly aligned with business requirements.",
       "Contributed to a 20% improvement in client conversion and decision-making effectiveness.",
-      "Built the company's internal CRM alongside the website (see Selected Projects).",
+      "Built the company's internal CRM alongside the website, improving decision-making by 25% and lead follow-ups by 20%.",
     ],
   },
   {
@@ -105,21 +105,6 @@ const projects = [
     repo: "https://github.com/deven065/Solo-Levelling",
     live: "https://solo-levelling-325.netlify.app/",
     image: "/showreel/solo-levelling.jpg",
-  },
-  {
-    title: "BMG Interiors: Website & CRM",
-    period: "Feb - May 2026",
-    status: "Production",
-    stack: ["React", "Next.js", "MariaDB"],
-    situation:
-      "A Mumbai interiors studio needed a premium online presence and was managing client records, operations, and lead follow-ups without a structured system.",
-    action:
-      "Shipped the studio's production website, then designed and built responsive CRM interfaces on a MariaDB backend, optimized queries, and iterated on workflows with internal stakeholders.",
-    result:
-      "Improved decision-making by 25% and lead follow-ups by 20%.",
-    repo: "https://github.com/deven065/bmginteriors-crm",
-    live: "https://bmg-interiors.vercel.app",
-    image: "/showreel/bmg-interiors.jpg",
   },
   {
     title: "SocietiQ",

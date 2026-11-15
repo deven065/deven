@@ -53,6 +53,27 @@ const experience = [
 
 const projects = [
   {
+    title: "Baton: Knowledge Handover Platform",
+    period: "Handover Hackathon · Team Bramhastra (Team Lead)",
+    status: "Top 30 of ~3,000 teams",
+    stack: ["Java 21", "Spring Boot", "PostgreSQL + pgvector", "React", "TypeScript", "Tailwind CSS", "Docker", "GitHub Actions"],
+    situation:
+      "When someone leaves a project, critical knowledge (decisions, owners, risks, and where things live) leaves with them. Handover notes are written in a hurry, go stale, and cannot be verified.",
+    action:
+      "Led a team of three to build a platform that reads authorised sources (chats, documents, task boards, repositories), reconstructs what the next person needs to know, and links every statement to the exact source quote. Anything unsupported becomes a question for the person leaving, a lead approves the handover, and each successor receives a signed, role-filtered version.",
+    result:
+      "A deployed, end-to-end product with an AI interview mode, decision log, knowledge-risk alerts, cited Q&A, and stale-document detection, backed by 169 automated tests on every push.",
+    why: [
+      "Every claim carries its receipt: statements are shown as fact only if the quote exists word for word in a source the reader may see.",
+      "Lowers the cost of attrition: new hires get a Day 1 / Week 1 / Month 1 plan and can ask cited questions instead of interrupting colleagues.",
+      "Built for trust: secrets and personal data are redacted before storage, permissions are enforced by the API, and each company's data stays in its own database.",
+    ],
+    story:
+      "Out of roughly 3,000 competing teams, we received an email confirming Baton is among the top 30. We are now waiting for the final result.",
+    repo: "https://github.com/deven065/Baton",
+    live: "https://batonteams.xyz",
+  },
+  {
     title: "ProofPath: AI Career Evidence Coach",
     period: "Kurukshetra Hackathon",
     status: "Hackathon project",
@@ -476,6 +497,19 @@ export default function Home() {
                     <p>{project.result}</p>
                   </div>
                 </div>
+                {project.why && (
+                  <div className="project-why">
+                    <span>Why organizations use it</span>
+                    <ul>
+                      {project.why.map((point) => <li key={point}>{point}</li>)}
+                    </ul>
+                  </div>
+                )}
+                {project.story && (
+                  <p className="project-story">
+                    <strong>Our story:</strong> {project.story}
+                  </p>
+                )}
                 <ul className="tag-list" aria-label={`${project.title} technologies`}>
                   {project.stack.map((item) => <li key={item}>{item}</li>)}
                 </ul>

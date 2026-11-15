@@ -1197,6 +1197,44 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.project-why {
+  margin-top: 24px;
+  padding: 18px 20px;
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+}
+
+.project-why span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-why ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.project-why li + li {
+  margin-top: 6px;
+}
+
+.project-story {
+  margin: 16px 0 0;
+  padding-left: 13px;
+  border-left: 3px solid var(--cyan);
+  color: #1e293b;
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+
 @media (max-width: 920px) {
   .hero {
     min-height: auto;

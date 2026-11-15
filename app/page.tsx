@@ -74,6 +74,7 @@ const projects = [
       "Out of roughly 3,000 competing teams, we received an email confirming Baton is among the top 30. We are now waiting for the final result.",
     repo: "https://github.com/deven065/Baton",
     live: "https://batonteams.xyz",
+    image: "/showreel/baton.jpg",
   },
   {
     title: "ProofPath: AI Career Evidence Coach",
@@ -88,6 +89,7 @@ const projects = [
       "A working, deployed product for the AI Career Coach challenge that turns job requirements into traceable, evidence-backed feedback.",
     repo: "https://github.com/deven065/JobApplication",
     live: "https://proofpath-ai.netlify.app/",
+    image: "/showreel/proofpath.jpg",
   },
   {
     title: "Solo Levelling",
@@ -97,36 +99,27 @@ const projects = [
     situation:
       "Self-improvement tools often feel like chores, and users lose motivation when progress is not visible or rewarding.",
     action:
-      "Built a gamified levelling system inspired by Solo Leveling's System, with a Java backend, a NeonDB (PostgreSQL) data layer, an animated React interface, and Groq AI integration.",
+      "Built a gamified levelling system inspired by Solo Leveling's System: personal goals become measurable daily quests and dungeon bosses, XP fills a level bar from E-Rank to S-Rank, and a Groq-powered System AI adjusts quests, logs progress, and plans new goals.",
     result:
-      "A polished, deployed full-stack app that turns personal progress into an engaging, game-like experience.",
+      "A polished, deployed full-stack app with a Java backend and NeonDB (PostgreSQL) that turns personal progress into an engaging, game-like experience.",
     repo: "https://github.com/deven065/Solo-Levelling",
     live: "https://solo-levelling-325.netlify.app/",
+    image: "/showreel/solo-levelling.jpg",
   },
   {
-    title: "BMG Interiors CRM",
+    title: "BMG Interiors: Website & CRM",
     period: "Feb - May 2026",
     status: "Production",
     stack: ["React", "Next.js", "MariaDB"],
     situation:
-      "An interiors business was managing client records, operations, and lead follow-ups without a structured system.",
+      "A Mumbai interiors studio needed a premium online presence and was managing client records, operations, and lead follow-ups without a structured system.",
     action:
-      "Designed and built responsive CRM interfaces on a MariaDB backend, optimized queries, and iterated on workflows with internal stakeholders.",
+      "Shipped the studio's production website, then designed and built responsive CRM interfaces on a MariaDB backend, optimized queries, and iterated on workflows with internal stakeholders.",
     result:
       "Improved decision-making by 25% and lead follow-ups by 20%.",
     repo: "https://github.com/deven065/bmginteriors-crm",
-  },
-  {
-    title: "AI Subscription E-commerce Platform",
-    period: "2025",
-    status: "Client delivery",
-    stack: ["Next.js", "TypeScript", "React", "Supabase"],
-    situation:
-      "A client needed a scalable storefront for selling AI subscription plans, from plan discovery through account management.",
-    action:
-      "Implemented authentication, database operations, a customer dashboard, plan management, and a Stripe-ready checkout flow on Supabase.",
-    result:
-      "Delivered a type-safe, production-ready codebase prepared for client-managed deployment and payment integration.",
+    live: "https://bmg-interiors.vercel.app",
+    image: "/showreel/bmg-interiors.jpg",
   },
   {
     title: "SocietiQ",
@@ -140,19 +133,8 @@ const projects = [
     result:
       "A scalable, role-driven foundation that unifies community operations and subscription services in one product.",
     repo: "https://github.com/deven065/SocietiQ",
-  },
-  {
-    title: "FlatMate",
-    period: "May 2025",
-    status: "Full-stack app",
-    stack: ["React", "Tailwind CSS", "Firebase Auth", "Realtime Database"],
-    situation:
-      "A residential society needed a secure digital workflow for member records, expenses, maintenance payments, and announcements.",
-    action:
-      "Built role-based authentication, protected admin routes, member and finance workflows, and an accessible dark mode.",
-    result:
-      "A working society-management application with separate, secure experiences for administrators and members.",
-    repo: "https://github.com/deven065/FlatMate",
+    live: "https://societiq.vercel.app",
+    image: "/showreel/societiq.jpg",
   },
   {
     title: "Chef Claude",
@@ -166,6 +148,8 @@ const projects = [
     result:
       "Deployed on Vercel as a practical AI-assisted recipe tool that responds to real user input.",
     repo: "https://github.com/deven065/chef-ai",
+    live: "https://chef-ai-sigma.vercel.app",
+    image: "/showreel/chef-claude.jpg",
   },
 ];
 
@@ -483,6 +467,8 @@ export default function Home() {
             status: project.status,
             summary: project.result,
             stack: project.stack.slice(0, 4),
+            image: project.image,
+            url: project.live?.replace(/^https?:\/\//, "").replace(/\/$/, ""),
           }))}
         />
 

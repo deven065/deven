@@ -12,6 +12,7 @@ import {
 import Image from "next/image";
 import HeroSceneLoader from "./components/HeroSceneLoader";
 import MotionEffects from "./components/MotionEffects";
+import Showreel from "./components/Showreel";
 
 const experience = [
   {
@@ -475,6 +476,15 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        <Showreel
+          items={projects.map((project) => ({
+            title: project.title,
+            status: project.status,
+            summary: project.result,
+            stack: project.stack.slice(0, 4),
+          }))}
+        />
 
         <section id="projects" className="section-shell content-section">
           <div className="section-heading heading-row" data-reveal="up">

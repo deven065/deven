@@ -1534,6 +1534,146 @@ footer {
   }
 }
 
+/* 3D showreel */
+.showreel {
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --accent: #93c5fd;
+  --cyan: #5eead4;
+  --line: rgba(255, 255, 255, 0.16);
+  position: relative;
+  background: #050b18;
+  color: var(--text);
+}
+
+.showreel-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.showreel-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.showreel-overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-block: 112px 40px;
+  pointer-events: none;
+}
+
+.showreel-head {
+  max-width: 460px;
+}
+
+.showreel-head h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
+  font-weight: 650;
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+}
+
+.showreel-head > p:not(.section-number) {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.showreel-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 22px;
+  padding: 11px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.showreel-play:hover {
+  border-color: rgba(147, 197, 253, 0.6);
+  background: rgba(147, 197, 253, 0.16);
+  transform: translateY(-2px);
+}
+
+.showreel-foot {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 22px;
+}
+
+.showreel-count {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+.showreel-count span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.showreel-rail {
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.showreel-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.showreel-current {
+  max-width: 300px;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .showreel-overlay {
+    padding-block: 96px 28px;
+  }
+
+  .showreel-foot {
+    grid-template-columns: auto 1fr;
+  }
+
+  .showreel-current {
+    grid-column: 1 / -1;
+    max-width: none;
+    text-align: left;
+  }
+}
+
 /* 3D hero scene */
 main {
   overflow-x: clip;

@@ -368,12 +368,24 @@ export default function HeroScene() {
     return () => observer.disconnect();
   }, []);
 
+  const [contextKey, setContextKey] = useState(0);
   const frameloop = settings.reducedMotion ? "demand" : visible ? "always" : "never";
 
   return (
     <div ref={container} className="hero-scene-canvas">
       {palette && (
         <Canvas
+          key={contextKey}
+          onCreated={({ gl }) => {
+            gl.domElement.addEventListener(
+              "webglcontextlost",
+              (event) => {
+                event.preventDefault();
+                window.setTimeout(() => setContextKey((key) => key + 1), 300);
+              },
+              { once: true },
+            );
+          }}
           camera={{ position: [0, 0, 7], fov: 45 }}
           dpr={[1, 1.8]}
           gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}

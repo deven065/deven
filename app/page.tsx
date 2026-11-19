@@ -10,6 +10,7 @@ import {
   Phone,
 } from "lucide-react";
 import Image from "next/image";
+import CopyEmailButton from "./components/CopyEmailButton";
 import HeroSceneLoader from "./components/HeroSceneLoader";
 import MotionEffects from "./components/MotionEffects";
 import Showreel from "./components/Showreel";
@@ -28,23 +29,22 @@ const experience = [
     ],
   },
   {
-    role: "Software Development Engineer (Contract)",
+    role: "Freelance Web Developer",
     company: "BMG Interiors",
     period: "Feb 2026 - May 2026",
     location: "Remote",
-    stack: ["Next.js", "React", "MariaDB"],
+    stack: ["Next.js", "React", "SEO", "Vercel"],
     points: [
-      "Partnered directly with the co-founder to take a production Next.js website from discovery to launch in under three weeks.",
-      "Independently owned design, development, testing, and deployment, keeping delivery tightly aligned with business requirements.",
-      "Contributed to a 20% improvement in client conversion and decision-making effectiveness.",
-      "Built the company's internal CRM alongside the website, improving decision-making by 25% and lead follow-ups by 20%.",
+      "Built and deployed a website using Next.js, translating client requirements into responsive web pages.",
+      "Delivered the project independently in under three weeks, including UI development, SEO improvements, performance tuning, and deployment.",
+      "Handled post-launch improvements and maintenance.",
     ],
   },
   {
     role: "Data Analyst",
     company: "HUDL",
     period: "Feb 2024 - Jun 2024",
-    location: "Mumbai, India",
+    location: "Goregaon, Mumbai",
     stack: ["Dashboards", "Data analysis", "Reporting"],
     points: [
       "Built operational dashboards for lead tracking and sales pipeline management.",
@@ -56,8 +56,8 @@ const experience = [
 const projects = [
   {
     title: "Baton: Knowledge Handover Platform",
-    period: "Handover Hackathon · Team Bramhastra (Team Lead)",
-    status: "Top 30 of ~3,000 teams",
+    period: "CoderInPune Hackathon · Team Bramhastra (Team Lead)",
+    status: "Top 30 of 3,000+ participants",
     stack: ["Java 21", "Spring Boot", "PostgreSQL + pgvector", "React", "TypeScript", "Tailwind CSS", "Docker", "GitHub Actions"],
     situation:
       "When someone leaves a project, critical knowledge (decisions, owners, risks, and where things live) leaves with them. Handover notes are written in a hurry, go stale, and cannot be verified.",
@@ -71,14 +71,14 @@ const projects = [
       "Built for trust: secrets and personal data are redacted before storage, permissions are enforced by the API, and each company's data stays in its own database.",
     ],
     story:
-      "Out of roughly 3,000 competing teams, we received an email confirming Baton is among the top 30. We are now waiting for the final result.",
+      "Out of 3,000+ participants at the CoderInPune Hackathon, we received an email confirming Baton is among the top 30 after clearing Rounds 1 and 2 of 3. We are now waiting for the final result.",
     repo: "https://github.com/deven065/Baton",
     live: "https://batonteams.xyz",
     image: "/showreel/baton.jpg",
   },
   {
     title: "ProofPath: AI Career Evidence Coach",
-    period: "Kurukshetra Hackathon",
+    period: "Kurukshetra 2026 · 24-hour hackathon",
     status: "Hackathon project",
     stack: ["React", "Framer Motion", "Java", "Spring Boot", "NeonDB (PostgreSQL)", "Groq AI", "GitHub Webhooks"],
     situation:
@@ -163,6 +163,12 @@ const skills = [
 
 const education = [
   {
+    program: "MCA, FinTech Specialization",
+    school: "Dr. D. Y. Patil Vidyapeeth (Online)",
+    period: "July 2026 - May 2028 (Expected)",
+    location: "Pune, India",
+  },
+  {
     program: "Full Stack Developer Program",
     school: "100xDevs",
     period: "August 2024 - July 2025",
@@ -189,13 +195,18 @@ const education = [
 ];
 
 const stats = [
-  { prefix: "Top ", value: 30, suffix: "", label: "of ~3,000 teams at the Handover Hackathon (result pending)" },
+  { prefix: "Top ", value: 30, suffix: "", label: "of 3,000+ participants at the CoderInPune Hackathon (result pending)" },
   { prefix: "", value: 169, suffix: "", label: "automated tests run on every Baton push" },
-  { prefix: "", value: 25, suffix: "%", label: "better decision-making with the BMG Interiors CRM" },
-  { prefix: "", value: 20, suffix: "%", label: "improvement in lead follow-ups for the client" },
+  { prefix: "< ", value: 3, suffix: " wks", label: "to build and launch BMG Interiors' website, independently" },
+  { prefix: "", value: 5, suffix: "", label: "deployed projects you can open and try below" },
 ];
 
 const marqueeItems = skills.flatMap((group) => group.items);
+
+const EMAIL = "devenrikame55@gmail.com";
+const EMAIL_SUBJECT = "Opportunity for Deven Rikame";
+const mailtoLink = `mailto:${EMAIL}?subject=${encodeURIComponent(EMAIL_SUBJECT)}`;
+const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${encodeURIComponent(EMAIL_SUBJECT)}`;
 
 const personSchema = {
   "@context": "https://schema.org",
@@ -245,7 +256,7 @@ export default function Home() {
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
           </div>
-          <a className="nav-cta" href="mailto:devenrikame55@gmail.com">
+          <a className="nav-cta" href="#contact">
             Let&apos;s talk <ArrowUpRight size={16} />
           </a>
         </nav>
@@ -280,7 +291,7 @@ export default function Home() {
             </p>
             <p className="hero-summary" data-reveal="up" data-delay="4">
               Mumbai-based software developer with hands-on experience building
-              and delivering production websites, CRM systems, SaaS products,
+              and delivering production websites, SaaS products,
               and AI-powered applications. I work across frontend, backend,
               databases, authentication, and deployment using React, Next.js,
               TypeScript, Node.js, Firebase, Supabase, and SQL.
@@ -292,7 +303,7 @@ export default function Home() {
               <a
                 className="button button-secondary"
                 href="/Deven_Resume.pdf"
-                download
+                download="Deven_Rikame_Resume.pdf"
               >
                 <Download size={18} /> Download resume
               </a>
@@ -599,13 +610,33 @@ export default function Home() {
               Let&apos;s talk about the problems your team is solving.
             </p>
             <div className="contact-actions">
-              <a className="button button-light" href="mailto:devenrikame55@gmail.com">
+              <a className="button button-light" href={mailtoLink}>
                 <Mail size={18} /> Email me
+              </a>
+              <a
+                className="button button-outline-light"
+                href={gmailLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <ArrowUpRight size={18} /> Write in Gmail
+              </a>
+              <CopyEmailButton email={EMAIL} />
+              <a
+                className="button button-outline-light"
+                href="https://www.linkedin.com/in/dev55"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <BriefcaseBusiness size={18} /> LinkedIn
               </a>
               <a className="button button-outline-light" href="tel:+919833703389">
                 <Phone size={18} /> +91 983-370-3389
               </a>
             </div>
+            <p className="contact-email">
+              Or write directly to <a href={mailtoLink}>{EMAIL}</a>
+            </p>
           </div>
         </section>
       </main>

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Deven Rikame | Full Stack Developer",
   description:
-    "Portfolio of Deven Rikame, a Mumbai-based full-stack developer building production websites, CRM systems, SaaS platforms, and AI-powered applications with React, Next.js, TypeScript, Node.js, Firebase, Supabase, and SQL.",
+    "Portfolio of Deven Rikame, a Mumbai-based full-stack developer building production websites, SaaS platforms, and AI-powered applications with React, Next.js, TypeScript, Node.js, Firebase, Supabase, and SQL.",
   keywords: [
     "Deven Rikame",
     "Full Stack Developer",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Deven Rikame | Full Stack Developer",
     description:
-      "Full-stack developer delivering production websites, CRM systems, SaaS platforms, and AI-powered applications.",
+      "Full-stack developer delivering production websites, SaaS platforms, and AI-powered applications.",
     type: "website",
     locale: "en_IN",
   },
